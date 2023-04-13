@@ -9,8 +9,8 @@ import {
 } from "react-bootstrap"
 import { io } from 'socket.io-client'
 import { User, Message } from "../types"
-// import TimeAgo from 'javascript-time-ago'
-// import en from 'javascript-time-ago/locale/en'
+import Timestamp from "react-timestamp"
+
 
 const socket = io("http://localhost:3001", {transports: ["websocket"]})
 
@@ -48,13 +48,12 @@ const Home = () => {
 
   // TimeAgo.addDefaultLocale(en)
   // const timeAgo = new TimeAgo('en-US')
-
+ 
 
   const sendMessage = () => {
     const newMessage = {
       sender: username,
       text: message,
-      // createdAt:timeAgo.format(Date.now() - 60 * 1000)
       createdAt: new Date().toLocaleString("en-US")
     }
     socket.emit("sendMessage", { message: newMessage })
@@ -84,7 +83,7 @@ const Home = () => {
           {/* )} */}
           {/* MIDDLE AREA: CHAT HISTORY */}
           <ListGroup>
-          {chatHistory.map((message, index) => (<ListGroup.Item key={index}>{<strong className="text-success">{message.sender} </strong>} <br /> {message.text} <br /> <small style={{display:'flex', justifyContent:'right'}}>{message.createdAt}</small></ListGroup.Item>))}
+          {chatHistory.map((message, index) => (<ListGroup.Item key={index}>{<strong className="text-success">{message.sender} </strong>} <br /> {message.text} <br /> <small style={{display:'flex', justifyContent:'right'}}><Timestamp relative date={message.createdAt} /> </small></ListGroup.Item>))}
           </ListGroup>
           {/* BOTTOM AREA: NEW MESSAGE */}
           <Form
