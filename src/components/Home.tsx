@@ -83,7 +83,7 @@ const Home = () => {
           {/* )} */}
           {/* MIDDLE AREA: CHAT HISTORY */}
           <ListGroup>
-          {chatHistory.map((message, index) => (<ListGroup.Item key={index}>{<strong className="text-success">{message.sender} </strong>} <br /> {message.text} <br /> <small style={{display:'flex', justifyContent:'right'}}><Timestamp relative date={message.createdAt} /> </small></ListGroup.Item>))}
+          {chatHistory.map((message, index) => (<ListGroup.Item className="rounded-pill mt-2 pl-4 text-secondary" variant="primary" key={index} >{<strong className="text-primary">{message.sender} </strong>} <br /><h6>{message.text}</h6>   <small style={{display:'flex', justifyContent:'right'}}><Timestamp relative date={message.createdAt} /> </small></ListGroup.Item>))}
           </ListGroup>
           {/* BOTTOM AREA: NEW MESSAGE */}
           <Form
