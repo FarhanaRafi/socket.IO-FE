@@ -11,6 +11,7 @@
     "@types/react": "^18.0.14",
     "@types/react-dom": "^18.0.5",
     "bootstrap": "^4.6.1",
+    "javascript-time-ago": "^2.5.9",
     "react": "^18.2.0",
     "react-bootstrap": "^1.6.5",
     "react-dom": "^18.2.0",

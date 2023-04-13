@@ -9,6 +9,8 @@ import {
 } from "react-bootstrap"
 import { io } from 'socket.io-client'
 import { User, Message } from "../types"
+// import TimeAgo from 'javascript-time-ago'
+// import en from 'javascript-time-ago/locale/en'
 
 const socket = io("http://localhost:3001", {transports: ["websocket"]})
 
@@ -44,10 +46,15 @@ const Home = () => {
     socket.emit("setUsername", { username })
   }
 
+  // TimeAgo.addDefaultLocale(en)
+  // const timeAgo = new TimeAgo('en-US')
+
+
   const sendMessage = () => {
     const newMessage = {
       sender: username,
       text: message,
+      // createdAt:timeAgo.format(Date.now() - 60 * 1000)
       createdAt: new Date().toLocaleString("en-US")
     }
     socket.emit("sendMessage", { message: newMessage })
